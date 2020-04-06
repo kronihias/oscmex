@@ -23,21 +23,20 @@ function osc_make()
     
   elseif ispc
 
-    % compile commands to build the osc library DLLs
 
-    % requires gnumex to be configured (with config file in mexopts.bat)
-    % requires libws2_32.a from mingw
-    % requires liblo to be compiled with the pthreads code commented out
+%     mex -Iy:\matlab\win\osc\liblo-0.22 -f y:\matlab\win\gnumex\mexopts.bat y:\matlab\osc\osc_new_address.c y:\matlab\win\osc\liblo-0.22\src\.libs\*.o c:\mingw\lib\libws2_32.a
+%     mex -Iy:\matlab\win\osc\liblo-0.22 -f y:\matlab\win\gnumex\mexopts.bat y:\matlab\osc\osc_free_address.c y:\matlab\win\osc\liblo-0.22\src\.libs\*.o c:\mingw\lib\libws2_32.a
+%     mex -Iy:\matlab\win\osc\liblo-0.22 -f y:\matlab\win\gnumex\mexopts.bat y:\matlab\osc\osc_new_server.c y:\matlab\win\osc\liblo-0.22\src\.libs\*.o c:\mingw\lib\libws2_32.a
+%     mex -Iy:\matlab\win\osc\liblo-0.22 -f y:\matlab\win\gnumex\mexopts.bat y:\matlab\osc\osc_free_server.c y:\matlab\win\osc\liblo-0.22\src\.libs\*.o c:\mingw\lib\libws2_32.a
+%     mex -Iy:\matlab\win\osc\liblo-0.22 -f y:\matlab\win\gnumex\mexopts.bat y:\matlab\osc\osc_send.c y:\matlab\win\osc\liblo-0.22\src\.libs\*.o c:\mingw\lib\libws2_32.a
+%     mex -Iy:\matlab\win\osc\liblo-0.22 -f y:\matlab\win\gnumex\mexopts.bat y:\matlab\osc\osc_recv.c y:\matlab\win\osc\liblo-0.22\src\.libs\*.o c:\mingw\lib\libws2_32.a
+%     
 
-    cd y:\matlab\win\osc\
-
-    mex -Iy:\matlab\win\osc\liblo-0.22 -f y:\matlab\win\gnumex\mexopts.bat y:\matlab\osc\osc_new_address.c y:\matlab\win\osc\liblo-0.22\src\.libs\*.o c:\mingw\lib\libws2_32.a
-    mex -Iy:\matlab\win\osc\liblo-0.22 -f y:\matlab\win\gnumex\mexopts.bat y:\matlab\osc\osc_free_address.c y:\matlab\win\osc\liblo-0.22\src\.libs\*.o c:\mingw\lib\libws2_32.a
-    mex -Iy:\matlab\win\osc\liblo-0.22 -f y:\matlab\win\gnumex\mexopts.bat y:\matlab\osc\osc_new_server.c y:\matlab\win\osc\liblo-0.22\src\.libs\*.o c:\mingw\lib\libws2_32.a
-    mex -Iy:\matlab\win\osc\liblo-0.22 -f y:\matlab\win\gnumex\mexopts.bat y:\matlab\osc\osc_free_server.c y:\matlab\win\osc\liblo-0.22\src\.libs\*.o c:\mingw\lib\libws2_32.a
-    mex -Iy:\matlab\win\osc\liblo-0.22 -f y:\matlab\win\gnumex\mexopts.bat y:\matlab\osc\osc_send.c y:\matlab\win\osc\liblo-0.22\src\.libs\*.o c:\mingw\lib\libws2_32.a
-    mex -Iy:\matlab\win\osc\liblo-0.22 -f y:\matlab\win\gnumex\mexopts.bat y:\matlab\osc\osc_recv.c y:\matlab\win\osc\liblo-0.22\src\.libs\*.o c:\mingw\lib\libws2_32.a
-    
-    cd ..\..\osc
+    mex -v -I../../liblo -L../win_binaries -llo_static -lWs2_32 -liphlpapi osc_new_address.c
+    mex -v -I../../liblo -L../win_binaries -llo_static -lWs2_32 -liphlpapi osc_free_address.c
+    mex -v -I../../liblo -L../win_binaries -llo_static -lWs2_32 -liphlpapi osc_new_server.c
+    mex -v -I../../liblo -L../win_binaries -llo_static -lWs2_32 -liphlpapi osc_free_server.c
+    mex -v -I../../liblo -L../win_binaries -llo_static -lWs2_32 -liphlpapi osc_send.c
+    mex -v -I../../liblo -L../win_binaries -llo_static -lWs2_32 -liphlpapi osc_recv.c
     
   end
