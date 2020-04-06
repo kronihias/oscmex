@@ -17,7 +17,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
     mexErrMsgTxt("Expecting one argument");
     return;
   }
-  if (nlhs > 0) {
+  if (nlhs > 1) {
     mexErrMsgTxt("Too many output arguments.");
     return;
   }
@@ -54,4 +54,5 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
 
   lo_address_free(d);
   
+  plhs[0] = mxCreateDoubleScalar((mxDouble)0.);
 }

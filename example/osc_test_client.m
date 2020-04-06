@@ -33,5 +33,5 @@ osc_send(a, m)
 err = osc_send(a, {m,m,m})
 
 % when we are done with the address it can be freed
-osc_free_address(a)
+a = osc_free_address(a)
 

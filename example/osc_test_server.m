@@ -32,6 +32,5 @@ for t = 1:10
 
 end
 
-osc_free_server(s);
-osc_free_address(a);
+s = osc_free_server(s);
 
