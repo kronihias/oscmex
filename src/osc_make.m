@@ -1,17 +1,27 @@
 function osc_make()
 
-  if isunix
+  if ismac
 
     cd(fileparts(which('osc_make')))
 
+    % link against static version of liblo to keep things simple..
+    mex -v -I/usr/local/include -L"../osx_binaries" -llo osc_new_address.c
+    mex -v -I/usr/local/include -L"../osx_binaries" -llo osc_free_address.c
+    mex -v -I/usr/local/include -L"../osx_binaries" -llo osc_new_server.c
+    mex -v -I/usr/local/include -L"../osx_binaries" -llo osc_free_server.c
+    mex -v -I/usr/local/include -L"../osx_binaries" -llo osc_send.c
+    mex -v -I/usr/local/include -L"../osx_binaries" -llo osc_recv.c
+
+  elseif isunix
+      
     mex -v -I/usr/local/include -llo osc_new_address.c
     mex -v -I/usr/local/include -llo osc_free_address.c
     mex -v -I/usr/local/include -llo osc_new_server.c
     mex -v -I/usr/local/include -llo osc_free_server.c
     mex -v -I/usr/local/include -llo osc_send.c
     mex -v -I/usr/local/include -llo osc_recv.c
-
-  else
+    
+  elseif ispc
 
     % compile commands to build the osc library DLLs
 
